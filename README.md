@@ -6,13 +6,13 @@
 
 | Шлях | Що це |
 |---|---|
-| `lab_shyliuk/src/mission_ap.cpp` | вузол `mission_ap` (Завдання 4) |
-| `lab_shyliuk/config/mission_ap.yaml` | висота `h`, точки A–D, критерій прибуття |
-| `lab_shyliuk/launch/mission_ap.launch` | запуск однією командою |
+| `lab_shilyuk/src/mission_ap.cpp` | вузол `mission_ap` (Завдання 4) |
+| `lab_shilyuk/config/mission_ap.yaml` | висота `h`, точки A–D, критерій прибуття |
+| `lab_shilyuk/launch/mission_ap.launch` | запуск однією командою |
 | `scripts/00_cleanup_check.sh` | прибирання ВМ і перевірка середовища |
 | `scripts/01_install_ardupilot.sh` | п. 3.1, кроки 1–3: клон, залежності, збірка SITL |
 | `scripts/02_install_mavros.sh` | п. 3.3: MAVROS + GeographicLib |
-| `scripts/03_build_package.sh` | додає `mission_ap` у пакет `lab_shyliuk` і збирає workspace |
+| `scripts/03_build_package.sh` | додає `mission_ap` у пакет `lab_shilyuk` і збирає workspace |
 | `scripts/run_sitl.sh` | SITL + MAVProxy з виходом `--out=127.0.0.1:14551` |
 | `scripts/run_mavros.sh` | `roslaunch mavros apm.launch fcu_url:=udp://127.0.0.1:14551@14555` |
 | `scripts/task3_flight.sh` | Завдання 3: політ командами `rosservice`/`rostopic pub` |
@@ -23,6 +23,8 @@
 ```bash
 cd ~ && git clone https://github.com/Annafgb/lab2-ardupilot-mavros.git && cd lab2-ardupilot-mavros/scripts
 ./00_cleanup_check.sh
+# якщо вільно < 12 ГБ: вимкнути ВМ, VMware -> VM -> Settings -> Hard Disk -> Expand (50 ГБ), увімкнути і
+./00b_grow_disk.sh
 # >>> знімок ВМ у VMware (VM -> Snapshot -> Take Snapshot) <<<
 ./01_install_ardupilot.sh      # 20-40 хв
 ./02_install_mavros.sh
@@ -36,10 +38,10 @@ cd ~ && git clone https://github.com/Annafgb/lab2-ardupilot-mavros.git && cd lab
 | 1 | `./run_sitl.sh -w` (перший раз), далі `./run_sitl.sh` |
 | 2 | `./run_mavros.sh` |
 | 3 | `rostopic echo /mavros/state` → `connected: True` |
-| 4 | `roslaunch lab_shyliuk mission_ap.launch` |
+| 4 | `roslaunch lab_shilyuk mission_ap.launch` |
 
 Свої координати (КТ3): скопіювати `config/mission_ap.yaml`, змінити A–D і запустити
-`roslaunch lab_shyliuk mission_ap.launch config:=$HOME/route.yaml`.
+`roslaunch lab_shilyuk mission_ap.launch config:=$HOME/route.yaml`.
 
 ## Схема з'єднань
 
