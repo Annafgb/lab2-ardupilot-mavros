@@ -2,7 +2,6 @@
 # Прибирання зайвого у ВМ і перевірка середовища перед ЛР2
 echo "=== До прибирання ==="; df -h / | tail -1
 pkill -f '/ttyd' 2>/dev/null; rm -f ~/ttyd ~/.vmagent.py ~/.vmagent.log /tmp/ag.b64
-sudo apt-get -y autoremove --purge
 sudo apt-get -y clean
 sudo journalctl --vacuum-size=50M >/dev/null 2>&1
 rm -rf ~/.cache/* ~/.local/share/Trash/* 2>/dev/null

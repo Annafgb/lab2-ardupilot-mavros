@@ -36,6 +36,9 @@ elif [ ! -e "$PKG" ]; then
 fi
 cd "$WS"
 if [ -d .catkin_tools ]; then catkin build lab_shilyuk
-else catkin_make --only-pkg-with-deps lab_shilyuk && (cd build && cmake . -DCATKIN_WHITELIST_PACKAGES="" >/dev/null); fi
+else
+  trap '(cd "$WS/build" && cmake . -DCATKIN_WHITELIST_PACKAGES="" >/dev/null 2>&1)' EXIT
+  catkin_make --only-pkg-with-deps lab_shilyuk
+fi
 grep -q "$WS/devel/setup.bash" ~/.bashrc || echo "source $WS/devel/setup.bash" >> ~/.bashrc
 echo "=== Готово. Відкрийте новий термінал або: source $WS/devel/setup.bash ==="
