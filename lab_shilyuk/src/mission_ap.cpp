@@ -7,6 +7,7 @@
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/CommandBool.h>
 #include <mavros_msgs/CommandTOL.h>
+#include <clocale>
 #include <cmath>
 #include <fstream>
 #include <iomanip>
@@ -46,6 +47,7 @@ double dist(const geometry_msgs::Point& p, const Wp& w) {
 }  // namespace
 
 int main(int argc, char** argv) {
+  std::setlocale(LC_ALL, "");  // інакше rosconsole виводить кирилицю як ????
   ros::init(argc, argv, "mission_ap");
   ros::NodeHandle nh, pnh("~");
 
