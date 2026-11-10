@@ -3,7 +3,7 @@
   <name>lab_shilyuk</name>
   <version>0.2.0</version>
   <description>Лабораторні роботи з керування БпЛА (Шилюк): ЛР2 — вузол mission_ap для ArduCopter SITL через MAVROS</description>
-  <maintainer email="fyyy93659@gmail.com">Anna Shyliuk</maintainer>
+  <maintainer email="shilyukanna2007@gmail.com">Anna Shyliuk</maintainer>
   <license>MIT</license>
   <buildtool_depend>catkin</buildtool_depend>
   <depend>roscpp</depend>
